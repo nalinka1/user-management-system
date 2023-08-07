@@ -34,7 +34,9 @@ export class LoginComponent implements OnInit {
         console.log(response);
 
         if (response === 'SUCCESS') {
-          this.router.navigate(['/home']).then(r => console.log('successfully logged into the home'));
+          this.router.navigate(['/home'],
+            { queryParams: { data: this.username } }).
+          then(r => console.log('successfully logged into the home'));
         } else if (response === 'WRONG_USERNAME') {
           loginForm.form.controls['username'].reset();
           this.errorMessage = 'Invalid Username';
